@@ -18,19 +18,22 @@ const verifyCallback =
     resolve();
   };
 
-const authMiddleware =
-  () => async (req: Request, res: Response, next: NextFunction) =>
-    new Promise<void>((resolve, reject) => {
-      passport.authenticate(
-        "jwt",
-        { session: false },
-        verifyCallback(req, resolve, reject)
-      )(req, res, next);
+const authMiddleware = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) =>
+  new Promise<void>((resolve, reject) => {
+    passport.authenticate(
+      "jwt",
+      { session: false },
+      verifyCallback(req, resolve, reject)
+    )(req, res, next);
+  })
+    .then(() => {
+      console.log("authenticated..", req.user);
+      next();
     })
-      .then(() => {
-        console.log("authenticated..", req.user);
-        next();
-      })
-      .catch((err) => next(err));
+    .catch((err) => next(err));
 
 export default authMiddleware;

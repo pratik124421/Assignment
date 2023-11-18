@@ -1,5 +1,6 @@
 import { Router } from "express";
-import authRoute from "./auth.route";
+import AuthRouter from "./auth.route";
+import TaskRouter from "./task.route";
 
 const router = Router();
 
@@ -11,7 +12,11 @@ interface RouterInterface {
 const defaultRoutes: RouterInterface[] = [
   {
     path: "/auth",
-    route: authRoute,
+    route: AuthRouter,
+  },
+  {
+    path: "/task",
+    route: TaskRouter,
   },
 ];
 

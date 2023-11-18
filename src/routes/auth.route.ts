@@ -1,19 +1,19 @@
 import express, { Router } from "express";
 import { validate } from "../modules/validate";
-import { authValidation, authController, auth } from "../modules/auth";
+import { authValidation, authController } from "../modules/auth";
 
-const router: Router = Router();
+const AuthRouter: Router = Router();
 
-router.post(
+AuthRouter.post(
   "/register",
   validate(authValidation.AuthUser),
   authController.registerUser
 );
 
-router.post(
+AuthRouter.post(
   "/login",
   validate(authValidation.AuthUser),
   authController.loginUser
 );
 
-export default router;
+export default AuthRouter;

@@ -1,9 +1,10 @@
 import { Document, Model } from "mongoose";
 import { JwtPayload } from "jsonwebtoken";
+import { ObjectID } from "bson";
 
 export interface IToken {
   token: string;
-  user: string;
+  userId: ObjectID;
   type: string;
   expires: Date;
 }

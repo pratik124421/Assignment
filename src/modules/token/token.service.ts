@@ -34,7 +34,7 @@ export const saveToken = async (
 ): Promise<ITokenDoc> => {
   const tokenDoc = await Token.create({
     token,
-    user: userId,
+    userId: userId,
     expires: expires.toDate(),
     type,
   });
@@ -55,8 +55,7 @@ export const verifyToken = async (
   const tokenDoc = await Token.findOne({
     token,
     type,
-    user: payload.sub,
-    blacklisted: false,
+    userId: payload.sub,
   });
   if (!tokenDoc) {
     throw new Error("Token not found");

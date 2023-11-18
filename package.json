@@ -1,5 +1,5 @@
 {
-  "name": "bckend",
+  "name": "assignment",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -29,12 +29,14 @@
     "mongoose": "^6.10.4",
     "node-cache": "^5.1.2",
     "node-cron": "^3.0.3",
-    "nodemon": "^2.0.20",
     "on-finished": "^2.4.1",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "request": "^2.88.2",
-    "typescript": "^4.8.4",
     "util": "^0.12.4"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1",
+    "typescript": "^5.2.2"
   }
 }

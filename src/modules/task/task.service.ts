@@ -35,3 +35,15 @@ export const removeTask = async (
     throw new ApiError(httpStatus.BAD_REQUEST, "Bad Request");
   }
 };
+
+export const updateTask = async (
+  _id: mongoose.Schema.Types.ObjectId,
+  userId: mongoose.Schema.Types.ObjectId,
+  TaskObj: ITask
+): Promise<ITaskDoc> => {
+  try {
+    return await Task.findOneAndUpdate({ _id, userId }, TaskObj, { new: true });
+  } catch (error) {
+    throw new ApiError(httpStatus.BAD_REQUEST, "Bad Request");
+  }
+};

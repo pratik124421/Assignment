@@ -25,3 +25,17 @@ export const TaskIdParamSchema = {
     taskId: Joi.string().required().custom(objectId),
   }),
 };
+
+const UpdateTask: Record<keyof ITaskCreatePayload, any> = {
+  title: Joi.string(),
+  description: Joi.string(),
+  dueDate: Joi.date(),
+  completed: Joi.boolean(),
+};
+
+export const UpdateTaskSchema = {
+  params: Joi.object().keys({
+    taskId: Joi.string().required().custom(objectId),
+  }),
+  body: Joi.object().keys(UpdateTask),
+};

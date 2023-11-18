@@ -23,4 +23,10 @@ TaskRouter.route("/remove/:taskId").delete(
   taskController.removeTask
 );
 
+TaskRouter.route("/update/:taskId").patch(
+  auth,
+  validate(taskValidation.UpdateTaskSchema),
+  taskController.updateTask
+);
+
 export default TaskRouter;

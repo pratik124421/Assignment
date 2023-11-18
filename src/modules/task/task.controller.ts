@@ -32,3 +32,16 @@ export const removeTask = catchAsync(async (req: Request, res: Response) => {
   }
   res.status(200).send({ message: "Task Removed Successfully" });
 });
+
+export const updateTask = catchAsync(async (req: Request, res: Response) => {
+  const task = await taskService.updateTask(
+    req.params["taskId"],
+    req.user._id,
+    req.body
+  );
+  console.log(task);
+  if (!task) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Task does not exist");
+  }
+  res.status(200).send(task);
+});

@@ -1,3 +1,4 @@
-import pick from "./pick";
+import catchAsync from './catchAsync';
+import pick from './pick';
 
-export { pick };
+export { catchAsync, pick };

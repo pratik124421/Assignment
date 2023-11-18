@@ -3,13 +3,13 @@ import * as Joi from "joi";
 import * as httpStatus from "http-status";
 import ApiError from "../errors/ApiError";
 import { pick } from "../utils";
+import { EnvironmentConfig } from "../../config/EnvironmentConfig";
 
 const validate =
   (schema: Record<string, any>) =>
   (req: Request, _res: Response, next: NextFunction): void => {
     const validSchema = pick(schema, ["params", "query", "body"]);
     const object = pick(req, Object.keys(validSchema));
-    console.log("schema:: ", validSchema, object);
     const { value, error } = Joi.compile(validSchema)
       .prefs({ errors: { label: "key" } })
       .validate(object);

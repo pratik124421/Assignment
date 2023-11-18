@@ -6,6 +6,8 @@ import { MongoConfig } from "./MongoConfig";
 import httpStatus = require("http-status");
 import { ApiError, errorConverter, errorHandler } from "../modules/errors";
 import router from "../routes";
+import * as passport from "passport";
+import { jwtStrategy } from "../modules/auth";
 
 export class WebAppConfig {
   public static Modals: Map<string, Model<any>>;
@@ -30,6 +32,9 @@ export class WebAppConfig {
 
     this.app.use(bodyParser.json());
     this.app.use(cookieParser());
+    this.app.use(passport.initialize());
+
+    passport.use("jwt", jwtStrategy);
 
     this.app.use("/api", router);
     this.app.use((_req, _res, next) => {

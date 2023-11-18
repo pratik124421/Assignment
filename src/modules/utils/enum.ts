@@ -1,4 +1,4 @@
-export enum Tables {
-  userTable = "user",
-  tokenTable = "token",
+export enum Collections {
+  userCollection = "user",
+  tokenCollection = "token",
 }

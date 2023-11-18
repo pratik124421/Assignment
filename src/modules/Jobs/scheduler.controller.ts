@@ -1,6 +1,5 @@
 const cron = require("node-cron");
-import { schedulerService } from ".";
-import { catchAsync } from "../utils";
+import * as schedulerService from "./scheduler.service";
 
 export const checkTaskStatusScheduler = async () => {
   cron.schedule("* * 0 * * 0-7", () => {

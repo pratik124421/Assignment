@@ -1,4 +1,4 @@
-import { Task } from "../task";
+import { Task } from "../task/index";
 import * as moment from "moment-timezone";
 
 export const checkTaskStatus = async () => {

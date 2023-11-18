@@ -1,0 +1,36 @@
+{
+  "name": "bckend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "localstart": "tsc --build && node ./lib/index.js",
+    "watch": "nodemon --watch ./src -e ts --exec \"npm run localstart\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@meanie/mongoose-to-json": "^2.6.0",
+    "axios": "^0.27.2",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "express-rate-limit": "^6.7.0",
+    "http-status": "^1.7.3",
+    "joi": "^17.9.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.29.4",
+    "mongodb": "^4.10.0",
+    "mongoose": "^6.10.4",
+    "node-cache": "^5.1.2",
+    "nodemon": "^2.0.20",
+    "on-finished": "^2.4.1",
+    "request": "^2.88.2",
+    "typescript": "^4.8.4",
+    "util": "^0.12.4"
+  }
+}

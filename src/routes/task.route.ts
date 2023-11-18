@@ -29,4 +29,6 @@ TaskRouter.route("/update/:taskId").patch(
   taskController.updateTask
 );
 
+TaskRouter.route("/all").get(auth, taskController.getAllTasks);
+
 export default TaskRouter;

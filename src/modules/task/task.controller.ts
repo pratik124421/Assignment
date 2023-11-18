@@ -45,3 +45,12 @@ export const updateTask = catchAsync(async (req: Request, res: Response) => {
   }
   res.status(200).send(task);
 });
+
+export const getAllTasks = catchAsync(async (req: Request, res: Response) => {
+  const tasks = await taskService.getAllTasks(req.user._id);
+  console.log("taskkkkk :", tasks);
+  if (!tasks || tasks.length == 0) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Tasks does not exist");
+  }
+  res.status(200).send(tasks);
+});

@@ -13,8 +13,14 @@ TaskRouter.route("/add").post(
 
 TaskRouter.route("/get/:taskId").get(
   auth,
-  validate(taskValidation.GetTaskSchema),
+  validate(taskValidation.TaskIdParamSchema),
   taskController.getTask
+);
+
+TaskRouter.route("/remove/:taskId").delete(
+  auth,
+  validate(taskValidation.TaskIdParamSchema),
+  taskController.removeTask
 );
 
 export default TaskRouter;

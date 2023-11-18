@@ -20,7 +20,7 @@ const objectId = (value: string, helpers: CustomHelpers) => {
   return value;
 };
 
-export const GetTaskSchema = {
+export const TaskIdParamSchema = {
   params: Joi.object().keys({
     taskId: Joi.string().required().custom(objectId),
   }),

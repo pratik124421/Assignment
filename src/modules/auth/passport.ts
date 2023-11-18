@@ -12,7 +12,7 @@ const jwtStrategy = new JwtStrategy(
   async (payload: IPayload, done) => {
     try {
       console.log(":::::::::::::::::", payload.sub);
-      const user = await User.findOne({ where: { id: payload.sub } });
+      const user = await User.findOne({ _id: payload.sub });
       console.log("user data: ", user);
       if (!user) {
         return done(null, false);

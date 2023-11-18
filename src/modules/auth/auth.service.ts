@@ -22,11 +22,10 @@ export const registerUser = async (AuthObj: IUser): Promise<IUserDoc> => {
 
 export const loginUser = async (AuthObj: IUser): Promise<IUserDoc> => {
   const { email, password } = AuthObj;
-  let user = await User.findOne({ where: { email } });
+  let user = await User.findOne({ email });
   if (!user) {
     throw new ApiError(httpStatus.UNAUTHORIZED, "Email does not exist");
   }
-  console.log("password matches:: ", await user.isPasswordMatch(password));
   if (await user.isPasswordMatch(password)) {
     return user;
   } else {

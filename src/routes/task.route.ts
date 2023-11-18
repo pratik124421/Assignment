@@ -11,4 +11,10 @@ TaskRouter.route("/add").post(
   taskController.ceateTask
 );
 
+TaskRouter.route("/get/:taskId").get(
+  auth,
+  validate(taskValidation.GetTaskSchema),
+  taskController.getTask
+);
+
 export default TaskRouter;

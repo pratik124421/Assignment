@@ -34,7 +34,7 @@ export const saveToken = async (
 ): Promise<ITokenDoc> => {
   const tokenDoc = await Token.create({
     token,
-    userId: userId,
+    userId,
     expires: expires.toDate(),
     type,
   });
@@ -68,12 +68,12 @@ export const generateAuthTokens = async (
 ): Promise<AccessAndRefreshTokens> => {
   const accessTokenExpires = moment().add(20, "minutes");
   const accessToken = generateToken(
-    user.id,
+    user._id,
     accessTokenExpires,
     tokenTypes.ACCESS
   );
 
-  await saveToken(accessToken, user.id, accessTokenExpires, tokenTypes.ACCESS);
+  await saveToken(accessToken, user._id, accessTokenExpires, tokenTypes.ACCESS);
 
   return {
     access: {
